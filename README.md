@@ -22,4 +22,14 @@ pip install -r requirements.txt
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
 
+ ##### Пример для  сокращения ссылки:
+`python main.py http://pep8online.com/checkresult`  
+Результат вывода в консоль:  
+`Сокращенная ссылка: bit.ly/3Hke5ko`  
+
+ ##### Пример получения количества переходов по ссылке bitly:  
+`python main.py bit.ly/3Hke5ko`  
+Результат вывода в консоль:  
+`Количество переходов по ссылке: 1` 
+
 [1]:https://dev.bitly.com/api-reference "dev.bitly.com/api-reference"

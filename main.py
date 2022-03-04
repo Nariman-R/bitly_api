@@ -1,3 +1,4 @@
+import argparse
 import os
 import requests
 from urllib.parse import urlparse
@@ -49,12 +50,14 @@ def count_clicks(token, url):
 def main():
     load_dotenv()
     bitly_token = os.environ["BITLY_TOKEN"]
-    url = input("Введите ссылку: ")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('link', help='Ссылка')
+    args = parser.parse_args()
     try:
-        if is_bitlink(bitly_token, url):
-            print("Количество кликов: ", count_clicks(bitly_token, url))
+        if is_bitlink(bitly_token, args.link):
+            print("Количество переходов по ссылке: ", count_clicks(bitly_token, args.link))
         else:
-            print("Битлинк ", shorten_link(bitly_token, url))
+            print("Битлинк ", shorten_link(bitly_token, args.link))
     except requests.exceptions.HTTPError:
         print("Ссылка неверная")
 

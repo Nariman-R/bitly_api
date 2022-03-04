@@ -16,8 +16,8 @@ def shorten_link(token, url):
               )
     response.raise_for_status()
     decoded_response = response.json()
-    if 'error' in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response['error'])
+    if "error" in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response["error"])
     return decoded_response["link"]
 
 
@@ -43,8 +43,8 @@ def count_clicks(token, url):
     response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
     decoded_response = response.json()
-    if 'error' in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response['error'])
+    if "error" in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response["error"])
     return decoded_response["total_clicks"]
 
 
@@ -52,7 +52,7 @@ def main():
     load_dotenv()
     bitly_token = os.environ["BITLY_TOKEN"]
     parser = argparse.ArgumentParser()
-    parser.add_argument('link', help='Ссылка')
+    parser.add_argument("link", help="Ссылка")
     args = parser.parse_args()
     try:
         if is_bitlink(bitly_token, args.link):
@@ -61,6 +61,7 @@ def main():
             print("Битлинк ", shorten_link(bitly_token, args.link))
     except requests.exceptions.HTTPError:
         print("Ссылка неверная")
+
 
 if __name__ == "__main__":
     main()

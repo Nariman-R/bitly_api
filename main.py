@@ -1,6 +1,7 @@
 import os
 import requests
 from urllib.parse import urlparse
+from dotenv import load_dotenv
 
 
 def shorten_link(token, url):
@@ -46,6 +47,7 @@ def count_clicks(token, url):
 
 
 def main():
+    load_dotenv()
     bitly_token = os.environ["BITLY_TOKEN"]
     url = input("Введите ссылку: ")
     try:

@@ -43,8 +43,8 @@ def count_clicks(token, url):
     response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
     decoded_response = response.json()
-    if "error" in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response["error"])
+    if "total_clicks" not in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response)
     return decoded_response["total_clicks"]
 
 

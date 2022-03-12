@@ -16,8 +16,8 @@ def shorten_link(token, url):
               )
     response.raise_for_status()
     decoded_response = response.json()
-    if "error" in decoded_response:
-        raise requests.exceptions.HTTPError(decoded_response["error"])
+    if "link" not in decoded_response:
+        raise requests.exceptions.HTTPError(decoded_response)
     return decoded_response["link"]
 
 
